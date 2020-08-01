@@ -27,7 +27,7 @@ const PATHS = {
   ),
 }
 
-const TweetActionIcon = ({ size = 24, kind, color }) => (
+const TweetActionIcon = ({ size = 24, kind, color, position }) => (
   <svg width={size} height={size} viewBox="0 0 24 24">
     {PATHS[kind]}
   </svg>

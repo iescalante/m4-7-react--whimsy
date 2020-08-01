@@ -5,6 +5,8 @@ import LikeButton from "../LikeButton";
 import Action from "./Action";
 import TweetActionIcon from "./TweetActionIcon";
 import { TweetContext } from '../TweetContext';
+import PoppingCircle from '../LikeButton/PoppingCircle';
+import ScaleIn from '../LikeButton/ScaleIn';
 
 const ActionBar = ({ isRetweetedByCurrentUser, isLikedByCurrentUser }) => {
   const { handleToggleLike, handleToggleRetweet } = React.useContext(TweetContext);
@@ -14,10 +16,20 @@ const ActionBar = ({ isRetweetedByCurrentUser, isLikedByCurrentUser }) => {
         <TweetActionIcon kind="reply" />
       </Action>
       <Action color="rgb(23, 191, 99)" size={40} onClick={handleToggleRetweet}>
-        <TweetActionIcon
-          kind="retweet"
-          color={isRetweetedByCurrentUser ? "rgb(23, 191, 99)" : undefined}
-        />
+        {isRetweetedByCurrentUser && <PoppingCircle size={40*0.6} color='rgb(23,191,99)'/>}
+        {isRetweetedByCurrentUser 
+        ? <ScaleIn>
+            <TweetActionIcon
+              kind="retweet"
+              color={isRetweetedByCurrentUser ? "rgb(23, 191, 99)" : undefined}
+            />
+          </ScaleIn>
+        : <TweetActionIcon
+            kind="retweet"
+            color={isRetweetedByCurrentUser ? "rgb(23, 191, 99)" : undefined}
+          />
+        }
+        
       </Action>
       <Action color="rgb(224, 36, 94)" size={40} onClick={handleToggleLike}>
         <LikeButton isLiked={isLikedByCurrentUser} />
