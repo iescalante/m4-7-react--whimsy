@@ -25,6 +25,7 @@ const Svg = styled.svg`
   display: block;
   backface-visibility: hidden;
   fill: none;
+  position: absolute;
 `;
 
 export default Heart;
